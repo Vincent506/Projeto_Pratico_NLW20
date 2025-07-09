@@ -6,8 +6,14 @@ const form = document.getElementById("form")
 const aiResponse = document.getElementById("aiResponse")
 
 const sendForm = (event) => {
-    event.preventDefaul()
+    event.preventDefault()
     console.log(event)
+
+    const apiKey = apiKeyInput.value
+    const game = gameSelect.value
+    const question = questionInput.value
+
+    console.log({apiKey, game, question})
 }
 
 form.addEventListener('submit', sendForm)
