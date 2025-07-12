@@ -13,7 +13,12 @@ const markdownToHTML = (text) => {
 const perguntarAI = async (question, game, ApiKey) => {
     const model = "gemini-2.5-flash"
     const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${ApiKey}`
-    const pergunta = `
+    
+    let pergunta = ''
+
+    
+    
+    const perguntaLoL = `
         ## Especialidade
         Você é um especialista assistente de meta para jogo ${game}
 
@@ -55,10 +60,23 @@ const perguntarAI = async (question, game, ApiKey) => {
         exemplo de runas\n\n
 
         ---
-        Aqui está a pergunta do usuário: ${question}
+        Aqui está a pergunta do usuário: ${question}`
+
+        const perguntaValorant = `
         
 
-    `
+        `
+        const perguntaCS = `
+        
+        `
+
+        if(game == 'League of Legends'){
+            pergunta = perguntaLoL
+        }else if( game == 'Valorant'){
+            pergunta = perguntaValorant
+        }else if( game == 'CS:GO'){
+            pergunta = perguntaCS
+        }
 
     const contents = [{
         role: 'user',
@@ -110,6 +128,7 @@ const sendForm = async (event) => {
     try {
         const text = await perguntarAI(question,game,apiKey)
         aiResponse.querySelector('.response-content').innerHTML = markdownToHTML(text)
+        aiResponse.classList.remove('hidden')
     }catch(error) {
         conseole.log('Error: ', error)
 
