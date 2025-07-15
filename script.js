@@ -69,8 +69,8 @@ const perguntarAI = async (question, game, ApiKey) => {
         const perguntaCS = `
         
         `
-
-        if(game == 'League of Legends'){
+        
+        if(game == 'LOL'){
             pergunta = perguntaLoL
         }else if( game == 'Valorant'){
             pergunta = perguntaValorant
