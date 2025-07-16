@@ -63,11 +63,64 @@ const perguntarAI = async (question, game, ApiKey) => {
         Aqui está a pergunta do usuário: ${question}`
 
         const perguntaValorant = `
+
         
 
         `
         const perguntaCS = `
+
         
+        `
+        //const perguntaClashRoyale = `
+          //  ## Especialidade
+            //Você é um especialista assistente de meta para jogo ${game}
+            //## Tarefa
+            //Você deve responder as perguntas do usuário com base no seu 
+            //conhecimento do jogo sobre :cartas, combo, deck, torres, 
+//        terminar depois...
+  //      `
+
+        const perguntaSF3 = `
+        ## Especialidade
+        Você é um especialista assistente de meta para jogo ${game}
+        ## Tarefa
+        Você deve responder as perguntas do usuário com base no seu 
+        conhecimento do jogo sobre :footsies,frame data,wif punish,hit confirm,combos fácil,médio,difíceis e confirm one hit
+        ## Regras
+        - Se você não sabe a resposta, responda com 'Não sei' e não 
+        tente inventar uma resposta. 
+        
+        - Se a pergunta não esta relacionada ao jogo, responda com 
+        'Essa pergunta não está relacionada ao jogo '
+        
+        - Considere a data atual ${new Date().toLocaleDateString()} e
+        
+        - Faça pesquisas atualizadas sobre o patch atual, baseado na 
+        data atual, para dar uma resposta coerente.
+        
+        -Nunca responda itens que você não tenha certeza de que existe
+        no patch atual.
+        ## Reposta
+        - Economize na resposta, seja direto e responda no maximo 500
+        caracteres
+        
+        - Responda em Mark
+        
+        - Não precisa fazer nenhuma saudação ou despedida, apenas 
+        responda o que o usuário está querendo.
+        ## Exemplo de Resposta
+
+        Pergunta do usuário: Melhores personagem para combar atualmente
+        resposta: O melhor personagem atualmente é o "Nome do personagem" 
+        \n\n**Estrategias:**\n\n
+        coloque os estrategias aqui.
+        \n\n**Combos:**\n\n
+        coloque os nomes dos golpes originais e
+        não abrevie
+        exemplo de combos\n\n
+        ---
+        Aqui está a pergunta do usuário: ${question}
+
         `
         
         if(game == 'LOL'){
@@ -76,6 +129,8 @@ const perguntarAI = async (question, game, ApiKey) => {
             pergunta = perguntaValorant
         }else if( game == 'CS:GO'){
             pergunta = perguntaCS
+        }else if(game == 'Street Fight'){
+            pergunta = perguntaSF3
         }
 
     const contents = [{
